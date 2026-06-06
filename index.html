@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudoku PWA</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --grid: #000000;
+  --subgrid: #000000;
+  --highlight: #eaeaea;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   font-family: serif;
+}
+
+/* GRID PERFEITO */
+#sudoku {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: 90vw;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  margin: 20px auto;
+  border: 2px solid var(--grid);
+  box-sizing: border-box;
+   margin-left: auto;
+  margin-right: auto;
+}
+
+/* CÉLULAS */
+.cell {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(14px, 4vw, 18px);
+  padding: 0;
+  margin: 0;
+  text-align:center;
+}
+
+/* BLOCO 3x3 (linhas grossas) */
+/* linhas verticais grossas */
+.cell:nth-child(3n) {
+  border-right: 2px solid var(--grid);
+}
+
+/* linhas horizontais grossas */
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+46):nth-child(-n+54) {
+  border-bottom: 2px solid var(--grid);
+}
+
+/* seleção */
+.cell:focus {
+  outline: none;
+  background: var(--highlight);
+}
+
+.cell:disabled {
+  font-weight: bold;
+}
+
+.cell {
+  cursor: pointer;
+}
+
+/* menu simples */
+#menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Sudoku</h2>
+<div id="timer">0s</div>
+<div id="sudoku"></div>
+
+<div id="menu">
+  <button onclick="newGame()">Novo</button>
+  <button onclick="openModal('rankingModal')">Ranking</button>
+</div>
+
+<div id="rankingModal" class="modal">
+  <div class="modal-content">
+    <h3>Ranking</h3>
+    <ul id="rankingList"></ul>
+    <button onclick="closeModal('rankingModal')">Fechar</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>
