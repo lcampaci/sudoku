@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#c0c0c0">
+<title>Sudoku Retrô</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="window">
+  <div class="titlebar"><span class="appicon">▦</span><strong>Sudoku</strong><div class="win-controls"><span>_</span><span>□</span><span>×</span></div></div>
+  <nav class="menubar">
+    <div class="menu-wrap"><button class="menu-btn">Jogo</button><div class="dropdown">
+      <button id="newGameMenu">Novo jogo</button><button id="saveMenu">Salvar partida</button><button id="loadMenu">Continuar partida</button><button id="rankingMenu">Melhores resultados</button><hr><button id="clearSaveMenu">Apagar partida salva</button>
+    </div></div>
+    <div class="menu-wrap"><button class="menu-btn">Ajuda</button><div class="dropdown"><button id="rulesMenu">Regras</button><button id="keysMenu">Comandos</button></div></div>
+    <div class="menu-wrap"><button class="menu-btn">Sobre</button><div class="dropdown"><button id="aboutMenu">Sobre o Sudoku</button></div></div>
+  </nav>
+  <main class="layout">
+    <section class="game-area">
+      <header class="game-heading"><div class="heading-title">S U D O K U</div><div class="subtitle">Desafio de lógica</div></header>
+      <div class="board-wrap"><div id="board" class="board" aria-label="Tabuleiro Sudoku"></div></div>
+      <div class="numberpad" id="numberpad"></div>
+      <div class="statusbar"><span id="status">Pronto</span><span id="clock">00:00.000</span></div>
+    </section>
+    <aside class="side">
+      <div class="group"><div class="group-title">Partida</div><label>Dificuldade</label><select id="difficulty"><option value="1">Fácil</option><option value="2">Médio</option><option value="3">Difícil</option></select>
+      <button class="action primary" id="newGame">Novo jogo</button><button class="action" id="saveGame">Salvar partida</button><button class="action" id="loadGame">Continuar partida</button></div>
+      <div class="group"><div class="group-title">Estatísticas</div><div class="stat"><span>Erros:</span><b id="errors">0</b></div><div class="stat"><span>Dicas:</span><b id="hints">0</b></div><div class="stat"><span>Preenchidas:</span><b id="filled">0/81</b></div><button class="action" id="hint">Pedir dica</button><button class="action" id="check">Verificar resultado</button><button class="action" id="erase">Apagar casa</button></div>
+      <div class="group"><div class="group-title">Melhores resultados</div><div id="miniRanking" class="mini-ranking">Nenhum resultado ainda.</div><button class="action" id="showRanking">Ver ranking completo</button></div>
+    </aside>
+  </main>
+  <footer>Sudoku Retrô • HTML / CSS / JavaScript</footer>
+</div>
+<div id="modal" class="modal hidden"><div class="dialog"><div class="dialog-title"><b id="modalTitle">Sudoku</b><button id="modalX">×</button></div><div id="modalBody" class="dialog-body"></div><div class="dialog-actions"><button id="modalOk" class="action primary">OK</button><button id="modalCancel" class="action">Fechar</button></div></div></div>
+<script src="app.js"></script>
+</body></html>

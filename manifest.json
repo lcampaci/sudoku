@@ -1,0 +1,10 @@
+{
+  "name": "Sudoku Retrô",
+  "short_name": "Sudoku",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#008080",
+  "theme_color": "#000080",
+  "description": "Sudoku retrô instalável com ranking e salvamento de partidas",
+  "icons": []
+}
